@@ -41,3 +41,5 @@ runSleigh.inputs.file('data/languages/LR35902.slaspec')
 runSleigh.outputs.file('data/languages/LR35902.sla')
 
 buildExtension.dependsOn runSleigh
+
+// TODO: Validate XML files

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language_definitions>
+   <language processor="LR35902"
+            endian="little"
+            size="16"
+            variant="default"
+            version="1.0"
+            slafile="LR35902.sla"
+            processorspec="LR35902.pspec"
+            id="LR35902:LE:16:default">
+    <description>Sharp LR35902 (DMG/CGB/SGB)</description>
+    <compiler name="default" spec="LR35902.cspec" id="default"/>
+  </language> 
+</language_definitions>
