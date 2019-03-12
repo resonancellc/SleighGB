@@ -10,16 +10,11 @@ define alignment = 1;
 define space ram type=ram_space size=2 default;
 define space register type=register_space size=1;
 
-define register offset=0 size=2
-  [ AF BC DE HL SP PC ];
-
 define register offset=0 size=1
   [ A F B C D E H L _ _ _ _];
 
-define bitrange ZF=F[7,1]
-                NF=F[6,1]
-                HF=F[5,1]
-                CF=F[4,1];
+define register offset=0 size=2
+  [ AF BC DE HL SP PC ];
 
 define token opbyte (8)
    op0_8 = (0,7);
@@ -36,6 +31,6 @@ addr16: imm16 is imm16 {
 
 }
 
-:JP addr16 is op0_8=0xC3 ; addr16 {
+:JP addr16 is op0_8=0xC3; addr16 {
     goto addr16;
 }
