@@ -3,6 +3,27 @@
   <programcounter register="PC"/>
   <default_symbols>
     <symbol name="_start" address="ram:0100" entry="true" />
-    <!-- TODO: Put all the MMIO regs in here? -->
+    <symbol name="P1" address="ram:ff00" entry="false" />
+    <symbol name="SB" address="ram:ff01" entry="false" />
+    <symbol name="SC" address="ram:ff02" entry="false" />
+    <symbol name="DIV" address="ram:ff04" entry="false" />
+    <symbol name="TIMA" address="ram:ff05" entry="false" />
+    <symbol name="TMA" address="ram:ff06" entry="false" />
+    <symbol name="TAC" address="ram:ff07" entry="false" />
+    <symbol name="IF" address="ram:ff0f" entry="false" />
+    <symbol name="IE" address="ram:ffff" entry="false" />
+    <symbol name="LCDC" address="ram:ff40" entry="false" />
+    <symbol name="STAT" address="ram:ff41" entry="false" />
+    <symbol name="SCY" address="ram:ff42" entry="false" />
+    <symbol name="SCX" address="ram:ff43" entry="false" />
+    <symbol name="LY" address="ram:ff44" entry="false" />
+    <symbol name="LYC" address="ram:ff45" entry="false" />
+    <symbol name="DMA" address="ram:ff46" entry="false" />
+    <symbol name="BGP" address="ram:ff47" entry="false" />
+    <symbol name="OBP0" address="ram:ff48" entry="false" />
+    <symbol name="OBP1" address="ram:ff49" entry="false" />
+    <symbol name="WY" address="ram:ff4a" entry="false" />
+    <symbol name="WX" address="ram:ff4b" entry="false" />
+    <!-- TODO: Put all the MMIO regs in here -->
   </default_symbols>
 </processor_spec>
