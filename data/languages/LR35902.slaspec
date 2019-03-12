@@ -17,6 +17,7 @@ define register offset=0 size=2
   [ AF BC DE HL SP PC ];
 
 define token opbyte (8)
+   imm8 = (0,7)
    reg0_3 = (0,2)
    reg3_3 = (3,5)
    op3_5 = (3,7)
@@ -31,6 +32,11 @@ attach variables [reg0_3 reg3_3 ] [ B C D E H L _ A ];
 # TODO: I don't quite understand what this is doing
 addr16: imm16 is imm16 {
     export *:1 imm16;
+}
+
+hiaddr8: imm8 is imm8 {
+    ptr:2 = 0xFF00 + imm8;
+    export *:1 ptr;
 }
 
 :NOP is op0_8=0x0 {
@@ -63,4 +69,8 @@ addr16: imm16 is imm16 {
 
 :LD SP,imm16 is op0_8=0x31 & SP; imm16 {
     SP = imm16;
+}
+
+:LDH hiaddr8,A is op0_8 = 0xE0 & A ; hiaddr8 {
+    hiaddr8 = A;
 }
