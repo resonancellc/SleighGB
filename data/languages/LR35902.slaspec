@@ -83,6 +83,10 @@ hiaddr8: imm8 is imm8 {
     hiaddr8 = A;
 }
 
+:LDH hiaddr8,A is op0_8 = 0xF0 & A ; hiaddr8 {
+    A = hiaddr8;
+}
+
 :LD reg4_2,imm16 is op6_2 = 0x0 & op0_4 = 0x1 & reg4_2 ; imm16 {
     reg4_2 = imm16;
 }
