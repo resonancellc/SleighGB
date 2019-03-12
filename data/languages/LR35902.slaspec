@@ -55,3 +55,7 @@ addr16: imm16 is imm16 {
 :LD reg3_3,reg0_3 is op6_2=0x1 & reg3_3 & reg0_3 {
     reg3_3 = reg0_3;
 }
+
+:LD SP,imm16 is op0_8=0x31 & SP; imm16 {
+    SP = imm16;
+}
