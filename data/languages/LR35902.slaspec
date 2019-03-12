@@ -36,6 +36,8 @@ attach variables [ reg4_2 ] [ BC DE HL SP ];
 # TODO: Should we track this as a "real" reg instead?
 define pcodeop enable_interrupts;
 
+define pcodeop halt;
+
 addr16: imm16 is imm16 {
     export *:1 imm16;
 }
@@ -95,4 +97,8 @@ hiaddr8: imm8 is imm8 {
 
 :EI is op0_8=0xFB {
     enable_interrupts();
+}
+
+:HALT is op0_8=0x76 {
+    halt();
 }
