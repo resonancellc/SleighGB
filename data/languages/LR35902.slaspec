@@ -52,6 +52,11 @@ addr16: imm16 is imm16 {
     A = A + reg0_3;
 }
 
+:XOR A,reg0_3 is op3_5=0x15 & reg0_3 & A {
+    # TODO: set flags
+    A = A ^ reg0_3;
+}
+
 :LD reg3_3,reg0_3 is op6_2=0x1 & reg3_3 & reg0_3 {
     reg3_3 = reg0_3;
 }
