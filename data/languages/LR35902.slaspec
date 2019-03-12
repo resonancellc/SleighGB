@@ -74,3 +74,7 @@ hiaddr8: imm8 is imm8 {
 :LDH hiaddr8,A is op0_8 = 0xE0 & A ; hiaddr8 {
     hiaddr8 = A;
 }
+
+:LD HL,imm16 is op0_8 = 0x21 & HL ; imm16 {
+    HL = imm16;
+}
