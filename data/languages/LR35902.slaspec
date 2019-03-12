@@ -33,7 +33,9 @@ define token data16 (16)
 attach variables [reg0_3 reg3_3 ] [ B C D E H L _ A ];
 attach variables [ reg4_2 ] [ BC DE HL SP ];
 
-# TODO: I don't quite understand what this is doing
+# TODO: Should we track this as a "real" reg instead?
+define pcodeop enable_interrupts;
+
 addr16: imm16 is imm16 {
     export *:1 imm16;
 }
@@ -89,4 +91,8 @@ hiaddr8: imm8 is imm8 {
 
 :LD addr16,A is op0_8=0xEA & A ; addr16 {
     addr16 = A;
+}
+
+:EI is op0_8=0xFB {
+    enable_interrupts();
 }
