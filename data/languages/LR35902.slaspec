@@ -33,6 +33,11 @@ define token data16 (16)
 attach variables [reg0_3 reg3_3 ] [ B C D E H L _ A ];
 attach variables [ reg4_2 ] [ BC DE HL SP ];
 
+@define ZF "F[7,1]"
+@define NF "F[6,1]"
+@define HF "F[5,1]"
+@define CF "F[4,1]"
+
 # TODO: Should we track this as a "real" reg instead?
 define pcodeop enable_interrupts;
 
@@ -61,19 +66,26 @@ hiaddr8: imm8 is imm8 {
     call addr16;
 }
 
+# Flags are based on the ALU from j2gbc, which passes blarg CPU conformance tests
+# so they should be correct
+
 :ADD A,reg0_3 is op3_5=0x10 & reg0_3 & A {
-    # TODO: set flags
     A = A + reg0_3;
+    $(ZF) = (A == 0);
+    $(NF) = 0;
+    $(HF) = ((A & 0x0F) + (reg0_3 & 0x0F)) > 0x0F;
+    # TODO: Not sure a clean way to express carry
 }
 
 :XOR A,reg0_3 is op3_5=0x15 & reg0_3 & A {
-    # TODO: set flags
     A = A ^ reg0_3;
+    $(ZF) = (A == 0);
 }
 
 :AND A,reg0_3 is op3_5=0x14 & reg0_3 & A {
-    # TODO: set flags
     A = A & reg0_3;
+    $(ZF) = (A == 0);
+    $(HF) = 1;
 }
 
 :LD reg3_3,reg0_3 is op6_2=0x1 & reg3_3 & reg0_3 {
