@@ -71,6 +71,11 @@ hiaddr8: imm8 is imm8 {
     A = A ^ reg0_3;
 }
 
+:AND A,reg0_3 is op3_5=0x14 & reg0_3 & A {
+    # TODO: set flags
+    A = A & reg0_3;
+}
+
 :LD reg3_3,reg0_3 is op6_2=0x1 & reg3_3 & reg0_3 {
     reg3_3 = reg0_3;
 }
