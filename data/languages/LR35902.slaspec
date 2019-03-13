@@ -127,6 +127,10 @@ reladdr8: simm8 is simm8 {
     addr16 = A;
 }
 
+:LD A,addr16 is op0_8=0xFA & A; addr16 {
+    A = addr16;
+}
+
 :EI is op0_8=0xFB {
     enable_interrupts();
 }
