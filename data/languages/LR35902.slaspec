@@ -72,6 +72,10 @@ reladdr8: simm8 is simm8 {
     if ($(ZF)) goto reladdr8;
 }
 
+:JRNC reladdr8 is op0_8=0x30; reladdr8 {
+    if ($(CF) == 0) goto reladdr8;
+}
+
 :CALL addr16 is op0_8=0xCD; addr16 {
     SP = SP - 2;
     *:2 SP = &:2 inst_next;
