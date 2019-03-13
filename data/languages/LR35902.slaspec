@@ -18,6 +18,7 @@ define register offset=0 size=2
 
 define token opbyte (8)
    imm8 = (0,7)
+   simm8 = (0,7) signed
    reg0_3 = (0,2)
    reg3_3 = (3,5)
    reg4_2 = (4,5)
@@ -52,12 +53,22 @@ hiaddr8: imm8 is imm8 {
     export *:1 ptr;
 }
 
+reladdr8: simm8 is simm8 {
+    ptr:2 = inst_next + simm8;
+    export *:1 ptr;
+}
+
 :NOP is op0_8=0x0 {
 
 }
 
 :JP addr16 is op0_8=0xC3; addr16 {
     goto addr16;
+}
+
+# TODO: get fancy with cc
+:JRZ reladdr8 is op0_8=0x28; reladdr8 {
+    if ($(ZF)) goto reladdr8;
 }
 
 :CALL addr16 is op0_8=0xCD; addr16 {
